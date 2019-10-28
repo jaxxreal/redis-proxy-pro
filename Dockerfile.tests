@@ -1,0 +1,17 @@
+FROM mhart/alpine-node:10
+
+WORKDIR /app
+
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+
+COPY ./tests/package*.json ./app/
+RUN cd ./app && npm install
+
+COPY ./tests/__tests__ ./app/
+COPY ./tests/tsconfig.json ./app/
+
+RUN cd ./app && npm run build
+
+CMD cd ./app && npm test
