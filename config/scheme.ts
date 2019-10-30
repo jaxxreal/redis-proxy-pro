@@ -1,6 +1,4 @@
-import convict from 'convict';
-
-export const config = convict({
+export const scheme = {
     env: {
         doc: 'The application environment.',
         format: ['production', 'development', 'test'],
@@ -31,4 +29,4 @@ export const config = convict({
             env: 'MAX_CAPACITY',
         }
     },
-});
+};

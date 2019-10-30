@@ -4,7 +4,7 @@ import Router from 'koa-router';
 const koaBody = require('koa-body');
 
 import { RedisClient } from './redisClient';
-import { config } from './config';
+import { config } from '../config';
 
 const router = new Router();
 const logger = pino();

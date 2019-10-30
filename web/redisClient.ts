@@ -107,5 +107,3 @@ export class RedisClient {
         return this.rpop(this.queueName);
     }
 }
-
-

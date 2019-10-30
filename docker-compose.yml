@@ -4,14 +4,19 @@ services:
     image: "redis:alpine"
     container_name: cache
     expose:
-      - 6379
+      - "${REDIS_PORT}"
+    ports:
+      - "6300:${REDIS_PORT}"
   web:
     links:
       - redis
     environment:
       - REDIS_URL=redis://cache
+      - PORT=$PORT
+      - CACHE_EXPIRY_TIME=$CACHE_EXPIRY_TIME
+      - MAX_CAPACITY=$MAX_CAPACITY
     build:
       context: .
-      dockerfile: ./Dockerfile.web
+      dockerfile: ./web/Dockerfile
     ports:
-      - "8081:8081"
+      - "${PORT}:8081"
